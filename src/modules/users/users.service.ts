@@ -61,42 +61,6 @@ export class UsersService {
     };
   }
 
-  // async findAll(
-  //   query: string,
-  //   current: number,
-  //   pageSize: number,
-  // ): Promise<{ results: User[]; totalPages: number }> {
-  //   const { filter, sort } = aqp(query);
-
-  //   if (filter.current) delete filter.current;
-  //   if (filter.pageSize) delete filter.pageSize;
-
-  //   if (!current) current = 1;
-  //   if (!pageSize) pageSize = 10;
-
-  //   const totalItems = (await this.userModal.find(filter)).length;
-  //   const totalPages = Math.ceil(totalItems / pageSize);
-
-  //   const skip = (current - 1) * pageSize;
-
-  //   const results = await this.userModal
-  //     .find(filter)
-  //     .limit(pageSize)
-  //     .select('-password')
-  //     .skip(skip)
-  //     .sort(sort as any);
-
-  //   return {
-  //     meta: {
-  //       current: current,
-  //       pageSize: pageSize,
-  //       pages: totalPages,
-  //       total: totalItems,
-  //     },
-  //     results,
-  //   };
-  // }
-
   async findAll(
     query: string,
     current: number = 1,

@@ -20,10 +20,12 @@ import { JwtAuthGuard } from './auth/passport/jwt-auth.guard';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { TransformInterceptor } from './core/transform.interceptor';
+import { DrinkModule } from './modules/drink/drink.module';
 
 @Module({
   imports: [
     UsersModule,
+    DrinkModule,
     LikesModule,
     MenuItemOptionsModule,
     MenuItemsModule,

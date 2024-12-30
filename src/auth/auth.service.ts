@@ -9,11 +9,14 @@ import { UpdateAuthDto } from './dto/update-auth.dto';
 import { comparePasswordHelper } from '@/helpers/util';
 import { access } from 'fs';
 import { JwtService } from '@nestjs/jwt';
+import { DrinkService } from '@/modules/drink/drink.service';
+import { CreateDrinkDto } from '@/modules/drink/dto/create-drink.dto';
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
+    private drinkService: DrinkService,
     private jwtService: JwtService,
   ) {}
 
@@ -70,5 +73,17 @@ export class AuthService {
 
   changePassword = async (data: ChangePasswordAuthDto) => {
     return await this.usersService.changePassword(data);
+  };
+
+  getDetailDrinkByName = async (name: string) => {
+    return await this.drinkService.getDetailDrinkByName(name);
+  };
+
+  createDetailDrink = async (createDrinkDto: CreateDrinkDto) => {
+    return await this.drinkService.createDetailDrink(createDrinkDto);
+  };
+
+  getListDrink = async () => {
+    return await this.drinkService.getListDrink();
   };
 }

@@ -8,12 +8,12 @@ import {
   Delete,
   UseGuards,
   Request,
+  Query,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 
-import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from './passport/local-auth.guard';
-import { JwtAuthGuard } from './passport/jwt-auth.guard';
+
 import { Public, ResponseMessage } from '@/decorator/customize';
 import {
   ChangePasswordAuthDto,
@@ -21,6 +21,7 @@ import {
   CreateAuthDto,
 } from './dto/create-auth.dto';
 import { MailerService } from '@nestjs-modules/mailer';
+import { CreateDrinkDto } from '@/modules/drink/dto/create-drink.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -84,5 +85,23 @@ export class AuthController {
       .then(() => {})
       .catch(() => {});
     return 'ok';
+  }
+
+  @Post('get-detail-drink-by-name')
+  @Public()
+  getDetailDrinkByName(@Body('name') name: string) {
+    return this.authService.getDetailDrinkByName(name);
+  }
+
+  @Post('create-detail-drink')
+  @Public()
+  createDetailDrink(@Body() createDrinkDto: CreateDrinkDto) {
+    return this.authService.createDetailDrink(createDrinkDto);
+  }
+
+  @Get('get-list-drink')
+  @Public()
+  getListDrink() {
+    return this.authService.getListDrink();
   }
 }

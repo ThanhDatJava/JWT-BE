@@ -7,10 +7,12 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './passport/local.strategy';
 import { JwtStrategy } from './passport/jwt.strategy';
+import { DrinkModule } from '@/modules/drink/drink.module';
 
 @Module({
   imports: [
     UsersModule,
+    DrinkModule,
 
     JwtModule.registerAsync({
       useFactory: async (configService: ConfigService) => ({
