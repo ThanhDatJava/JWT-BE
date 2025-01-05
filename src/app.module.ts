@@ -21,11 +21,15 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { TransformInterceptor } from './core/transform.interceptor';
 import { DrinkModule } from './modules/drink/drink.module';
+import { HomeModule } from './modules/home/home.module';
+import { RewardsModule } from './modules/rewards/rewards.module';
 
 @Module({
   imports: [
     UsersModule,
     DrinkModule,
+    HomeModule,
+    RewardsModule,
     LikesModule,
     MenuItemOptionsModule,
     MenuItemsModule,

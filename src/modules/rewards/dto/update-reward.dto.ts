@@ -1,4 +1,8 @@
+import { PartialType } from '@nestjs/mapped-types';
+import { CreateRewardDto } from './create-reward.dto';
 import { IsMongoId, IsNotEmpty, IsOptional } from 'class-validator';
+
+export class UpdateRewardDto extends PartialType(CreateRewardDto) {}
 
 export class UpdateDrinkDto {
   @IsMongoId({ message: '_id không hợp lệ' })
@@ -6,15 +10,7 @@ export class UpdateDrinkDto {
   _id: string;
 
   @IsOptional()
-  name: string;
+  prizes: string;
   @IsOptional()
-  type: string;
-  @IsOptional()
-  description: string;
-  @IsOptional()
-  descriptionMore: string;
-  @IsOptional()
-  price: string;
-  @IsOptional()
-  image: string;
+  colors: string;
 }

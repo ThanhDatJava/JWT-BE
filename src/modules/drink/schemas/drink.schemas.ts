@@ -8,7 +8,7 @@ export class Drink {
   @Prop()
   name: string;
   @Prop()
-  drink: string;
+  type: string;
   @Prop()
   description: string;
   @Prop()

@@ -144,7 +144,6 @@ export class UsersService {
     } else {
       throw new BadRequestException(' Id khong dung dung dinh dang mongodb');
     }
-    return `This action removes a #${_id} user`;
   }
 
   handleRegister = async (registerDto: CreateAuthDto) => {

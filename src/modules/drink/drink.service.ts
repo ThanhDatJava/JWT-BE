@@ -32,12 +32,12 @@ export class DrinkService {
   }
 
   async getDetailDrinkByName(name: string) {
-    const drink = await this.DrinkModal.findOne({ name });
-    return drink;
+    const type = await this.DrinkModal.findOne({ name });
+    return type;
   }
 
   async createDetailDrink(createDrinkDto: CreateDrinkDto) {
-    const { name, description, descriptionMore, price, image, drink } =
+    const { name, description, descriptionMore, price, image, type } =
       createDrinkDto;
 
     // Kiểm tra nếu các trường cần thiết không tồn tại
@@ -54,7 +54,7 @@ export class DrinkService {
     // Tạo món đồ uống trong cơ sở dữ liệu
     const listdrink = await this.DrinkModal.create({
       name,
-      drink,
+      type,
       description,
       descriptionMore,
       price,
@@ -69,35 +69,15 @@ export class DrinkService {
     };
   }
 
-  // async getListDrink(): Promise<any> {
-  //   const listdrinksCoffee = await this.DrinkModal.find({ drink: 'Coffee' }) // Filter drinks with name 'coffee'
-  //     .select('name') // Selecting only the `name` field
-  //     .lean();
-
-  //   const listdrinksTea = await this.DrinkModal.find({ drink: 'Tea' }) // Filter drinks with name 'tea'
-  //     .select('name') // Selecting only the `name` field
-  //     .lean();
-
-  //   // Return an array of names from both lists
-  //   // return [
-  //   //   ...listdrinksCoffee.map((drinkCoffee) => drinkCoffee.name),
-  //   //   ...listdrinksTea.map((drinkTea) => drinkTea.name),
-  //   // ];
-  //   return [
-  //     "Coffe":[...listdrinksCoffee.map((drinkCoffee) => drinkCoffee.name)],
-  //     "Tea":[...listdrinksTea.map((drinkTea) => drinkTea.name)],
-  //   ];
-  // }
-
   async getListDrink(): Promise<any> {
-    const listdrinksCoffee = await this.DrinkModal.find({ drink: 'Coffee' }) // Filter drinks with name 'coffee'
+    const listdrinksCoffee = await this.DrinkModal.find({ type: 'Coffee' }) // Filter drinks with name 'coffee'
       .select('name') // Selecting only the `name` field
       .lean();
 
-    const listdrinksTea = await this.DrinkModal.find({ drink: 'Tea' }) // Filter drinks with name 'tea'
+    const listdrinksTea = await this.DrinkModal.find({ type: 'Tea' }) // Filter drinks with name 'tea'
       .select('name') // Selecting only the `name` field
       .lean();
-    const listdrinksCake = await this.DrinkModal.find({ drink: 'Cake' }) // Filter drinks with name 'tea'
+    const listdrinksCake = await this.DrinkModal.find({ type: 'Cake' }) // Filter drinks with name 'tea'
       .select('name') // Selecting only the `name` field
       .lean();
 

@@ -8,11 +8,15 @@ import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './passport/local.strategy';
 import { JwtStrategy } from './passport/jwt.strategy';
 import { DrinkModule } from '@/modules/drink/drink.module';
+import { HomeModule } from '@/modules/home/home.module';
+import { RewardsModule } from '@/modules/rewards/rewards.module';
 
 @Module({
   imports: [
     UsersModule,
     DrinkModule,
+    HomeModule,
+    RewardsModule,
 
     JwtModule.registerAsync({
       useFactory: async (configService: ConfigService) => ({

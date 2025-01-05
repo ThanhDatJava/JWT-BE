@@ -4,7 +4,7 @@ export class CreateDrinkDto {
   @IsNotEmpty({ message: 'name must not be left blank' })
   name: string;
   @IsNotEmpty({ message: 'drink must not be left blank' })
-  drink: string;
+  type: string;
   @IsNotEmpty({ message: 'description must not be left blank' })
   description: string;
   @IsNotEmpty({ message: 'descriptionMore must not be left blank' })

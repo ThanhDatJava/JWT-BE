@@ -1,3 +1,5 @@
+import { RewardsService } from './../modules/rewards/rewards.service';
+import { CreateRewardDto } from './../modules/rewards/dto/create-reward.dto';
 import { UsersService } from './../modules/users/users.service';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import {
@@ -11,6 +13,9 @@ import { access } from 'fs';
 import { JwtService } from '@nestjs/jwt';
 import { DrinkService } from '@/modules/drink/drink.service';
 import { CreateDrinkDto } from '@/modules/drink/dto/create-drink.dto';
+import { HomeService } from '@/modules/home/home.service';
+import { CreateHomeDto } from '@/modules/home/dto/create-home.dto';
+import { UpdateHomeDto } from '@/modules/home/dto/update-home.dto';
 
 @Injectable()
 export class AuthService {
@@ -18,6 +23,8 @@ export class AuthService {
     private usersService: UsersService,
     private drinkService: DrinkService,
     private jwtService: JwtService,
+    private homeService: HomeService,
+    private rewardsService: RewardsService,
   ) {}
 
   async validateUser(username: string, pass: string): Promise<any> {
@@ -85,5 +92,27 @@ export class AuthService {
 
   getListDrink = async () => {
     return await this.drinkService.getListDrink();
+  };
+
+  createDetailHomepage = async (createHomeDto: CreateHomeDto) => {
+    return await this.homeService.createDetailHomepage(createHomeDto);
+  };
+  editDetailHomepage = async (updateHomeDto: UpdateHomeDto) => {
+    return await this.homeService.editDetailHomepage(updateHomeDto);
+  };
+  deleteDetailHomepage = async (updateHomeDto: UpdateHomeDto) => {
+    return await this.homeService.deleteDetailHomepage(updateHomeDto);
+  };
+
+  getListDetailHomepage = async () => {
+    return await this.homeService.getListDetailHomepage();
+  };
+
+  createDetailReward = async (createRewardDto: CreateRewardDto) => {
+    return await this.rewardsService.createDetailReward(createRewardDto);
+  };
+
+  getListDetailReward = async () => {
+    return await this.rewardsService.getListDetailReward();
   };
 }

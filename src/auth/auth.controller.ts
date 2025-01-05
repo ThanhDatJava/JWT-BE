@@ -22,6 +22,9 @@ import {
 } from './dto/create-auth.dto';
 import { MailerService } from '@nestjs-modules/mailer';
 import { CreateDrinkDto } from '@/modules/drink/dto/create-drink.dto';
+import { CreateHomeDto } from '@/modules/home/dto/create-home.dto';
+import { CreateRewardDto } from '@/modules/rewards/dto/create-reward.dto';
+import { UpdateHomeDto } from '@/modules/home/dto/update-home.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -103,5 +106,41 @@ export class AuthController {
   @Public()
   getListDrink() {
     return this.authService.getListDrink();
+  }
+
+  @Get('get-list-detail-homepage')
+  @Public()
+  getListDetailHomepage() {
+    return this.authService.getListDetailHomepage();
+  }
+
+  @Post('create-detail-homepage')
+  @Public()
+  createDetailHomepage(@Body() createHomeDto: CreateHomeDto) {
+    return this.authService.createDetailHomepage(createHomeDto);
+  }
+
+  @Post('edit-detail-homepage')
+  @Public()
+  editDetailHomepage(@Body() updateHomeDto: UpdateHomeDto) {
+    return this.authService.editDetailHomepage(updateHomeDto);
+  }
+
+  @Post('delete-detail-homepage')
+  @Public()
+  deleteDetailHomepage(@Body() updateHomeDto: UpdateHomeDto) {
+    return this.authService.deleteDetailHomepage(updateHomeDto);
+  }
+
+  @Post('create-detail-reward')
+  @Public()
+  createDetailReward(@Body() createRewardDto: CreateRewardDto) {
+    return this.authService.createDetailReward(createRewardDto);
+  }
+
+  @Get('get-list-detail-reward')
+  @Public()
+  getListDetailReward() {
+    return this.authService.getListDetailReward();
   }
 }
